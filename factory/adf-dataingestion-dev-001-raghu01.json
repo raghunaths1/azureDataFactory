@@ -1,0 +1,9 @@
+{
+	"name": "adf-dataingestion-dev-001-raghu01",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cc684bec-a910-48b5-987e-0130c99be608",
+		"tenantId": "996e67db-df83-4ddd-b1e4-305d3a3f1a2c"
+	}
+}
