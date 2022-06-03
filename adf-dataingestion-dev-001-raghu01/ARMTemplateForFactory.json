@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-dataingestion-dev-001-raghu01"
 		},
+		"LS_abls_Buyalot_webstore_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_abls_Buyalot_webstore'"
+		},
 		"LS_abs_webstore_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_abs_webstore'"
@@ -69,14 +73,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DS_online_sales_json",
+								"referenceName": "DS_abls_Buyalot_json",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_dl_online_sales_json",
+								"referenceName": "DS_adls_data_engineering_json",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -90,36 +94,12 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_online_sales_json')]",
-				"[concat(variables('factoryId'), '/datasets/DS_dl_online_sales_json')]"
+				"[concat(variables('factoryId'), '/datasets/DS_abls_Buyalot_json')]",
+				"[concat(variables('factoryId'), '/datasets/DS_adls_data_engineering_json')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_dl_online_sales_json')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_adls_data_engineering_dl",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "webstore/raw/onlinesales",
-						"fileSystem": "webdevelopment"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_adls_data_engineering_dl')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_online_sales_json')]",
+			"name": "[concat(parameters('factoryName'), '/DS_abls_Buyalot_json')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -214,6 +194,44 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_abs_webstore')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_adls_data_engineering_json')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_adls_data_engineering_dl",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "webstore/raw/onlinesales",
+						"fileSystem": "webdevelopment"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_adls_data_engineering_dl')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_abls_Buyalot_webstore')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "connection to the Buyalot website data",
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('LS_abls_Buyalot_webstore_connectionString')]"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_abs_webstore')]",

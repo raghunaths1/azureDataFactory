@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "adf-dataingestion-dev-001-raghu01"
 		},
+		"LS_abls_Buyalot_webstore_connectionString": {
+			"value": ""
+		},
 		"LS_abs_webstore_connectionString": {
 			"value": ""
 		},
