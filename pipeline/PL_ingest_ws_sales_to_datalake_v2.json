@@ -79,7 +79,7 @@
 						"Content-Type": "application/json"
 					},
 					"body": {
-						"value": "@json(concat('{\r\n\"emailAddress\":\"sri.raghunath\"yahoo.com\",\r\n\"subject\":\"ADF Pipeline\",\r\n\"messageBody\":\"ingestion of web store data into data lake\"\r\n}'))",
+						"value": "@json(concat('{\n\"emailAddress\":\"sri.raghunath@yahoo.com\",\n\"subject\":\"ADF Pipeline\",\n\"messageBody\":\"ingestion of web store data into data lake\"\n}'))",
 						"type": "Expression"
 					}
 				}
