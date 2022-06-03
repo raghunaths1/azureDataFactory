@@ -1,0 +1,6 @@
+{
+	"name": "PL_ingest_ws_sales_to_datalake",
+	"properties": {
+		"annotations": []
+	}
+}
