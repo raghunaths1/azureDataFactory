@@ -80,7 +80,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "LS_abs_webstore",
+					"referenceName": "LS_abls_Buyalot_webstore",
 					"type": "LinkedServiceReference"
 				},
 				"folder": {
@@ -168,7 +168,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_abs_webstore')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_abls_Buyalot_webstore')]"
 			]
 		},
 		{
