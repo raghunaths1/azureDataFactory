@@ -1,0 +1,90 @@
+{
+	"name": "PL_ingest_ws_sales_to_datalake_v2",
+	"properties": {
+		"description": "ingest web store online sales data into data lake",
+		"activities": [
+			{
+				"name": "Copy Web Store online Sales Data",
+				"description": "Copy online Sales Data from the Web Store and ingest into data lake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_abls_Buyalot_json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_adls_data_engineering_json",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Send email",
+				"description": "Send email notification",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy Web Store online Sales Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-08.uksouth.logic.azure.com:443/workflows/8a47ddb372704c98befa92fc042785da/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Z-5ZL3Cc_6qHkI9f7-hAQFNyoB44uAr0DCM6AKfr9Vo",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application.json"
+					},
+					"body": {
+						"value": "@json(concat('{\r\n\"emailAddress\":\"sri.raghunath\"yahoo.com\",\r\n\"subject\":\"ADF Pipeline\",\r\n\"messageBody\":\"ingestion of web store data into data lake\"\r\n}'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
