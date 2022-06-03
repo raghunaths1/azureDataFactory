@@ -1,5 +1,5 @@
 {
-	"name": "DS_online_sales_json",
+	"name": "DS_abls_Buyalot_json",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_abs_webstore",

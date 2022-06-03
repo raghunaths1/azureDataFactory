@@ -41,13 +41,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_online_sales_json",
+						"referenceName": "DS_abls_Buyalot_json",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_dl_online_sales_json",
+						"referenceName": "DS_adls_data_engineering_json",
 						"type": "DatasetReference"
 					}
 				]

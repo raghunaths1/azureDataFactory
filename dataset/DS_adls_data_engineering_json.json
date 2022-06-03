@@ -1,5 +1,5 @@
 {
-	"name": "DS_dl_online_sales_json",
+	"name": "DS_adls_data_engineering_json",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_adls_data_engineering_dl",
