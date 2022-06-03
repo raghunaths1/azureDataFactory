@@ -76,7 +76,7 @@
 					"url": "https://prod-08.uksouth.logic.azure.com:443/workflows/8a47ddb372704c98befa92fc042785da/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Z-5ZL3Cc_6qHkI9f7-hAQFNyoB44uAr0DCM6AKfr9Vo",
 					"method": "POST",
 					"headers": {
-						"Content-Type": "application.json"
+						"Content-Type": "application/json"
 					},
 					"body": {
 						"value": "@json(concat('{\r\n\"emailAddress\":\"sri.raghunath\"yahoo.com\",\r\n\"subject\":\"ADF Pipeline\",\r\n\"messageBody\":\"ingestion of web store data into data lake\"\r\n}'))",
