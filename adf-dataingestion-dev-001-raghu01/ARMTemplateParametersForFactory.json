@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-dataingestion-dev-001-raghu01"
+		},
+		"LS_abs_webstore_connectionString": {
+			"value": ""
+		},
+		"LS_adls_data_engineering_dl_accountKey": {
+			"value": ""
+		},
+		"LS_adls_data_engineering_dl_properties_typeProperties_url": {
+			"value": "https://cdedatalakedev001.dfs.core.windows.net"
+		}
+	}
+}
