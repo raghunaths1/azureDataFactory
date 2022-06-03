@@ -2,7 +2,7 @@
 	"name": "DS_abls_Buyalot_json",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_abs_webstore",
+			"referenceName": "LS_abls_Buyalot_webstore",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
